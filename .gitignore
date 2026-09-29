@@ -1,0 +1,7 @@
+.venv/
+.env
+.cache/
+__pycache__/
+.pytest_cache/
+Supabase.txt
+*.crt
