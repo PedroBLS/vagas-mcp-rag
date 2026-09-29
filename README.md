@@ -49,14 +49,26 @@ copy .env.example .env               # e preencha DATABASE_URL (Supabase com pgv
 pytest                               # testes offline (sem rede)
 ```
 
-Registrar o servidor no **Claude Code**:
-```bash
-claude mcp add vagas -- C:\caminho\vagas-mcp-rag\.venv\Scripts\python.exe C:\caminho\vagas-mcp-rag\server.py
-```
+Registrar o servidor no **Claude Code**, por uma destas formas:
+- pela linha de comando:
+  ```bash
+  claude mcp add vagas -- C:\caminho\vagas-mcp-rag\.venv\Scripts\python.exe C:\caminho\vagas-mcp-rag\server.py
+  ```
+- ou com um arquivo `.mcp.json` na pasta do projeto, que o Claude Code carrega ao abrir uma sessão ali (também funciona no app desktop):
+  ```json
+  { "mcpServers": { "vagas": { "command": "C:\\caminho\\vagas-mcp-rag\\.venv\\Scripts\\python.exe",
+                               "args": ["C:\\caminho\\vagas-mcp-rag\\server.py"] } } }
+  ```
 
 Exemplos de pedido ao Claude:
 - "Indexe vagas remotas de analista de dados."
 - "Quais vagas combinam com este resumo do meu CV? Explique o encaixe e as lacunas."
+
+## Demonstração
+
+O Claude Code chamando `vagas_parecidas` com um resumo de CV e explicando o encaixe e as lacunas de cada vaga a partir dos trechos recuperados:
+
+![Demonstração no Claude Code](docs/demo.png)
 
 ## Decisões e limites
 
