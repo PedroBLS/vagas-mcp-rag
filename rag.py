@@ -25,7 +25,10 @@ def quebrar_em_trechos(texto: str, tamanho: int = PALAVRAS_POR_TRECHO, sobreposi
 @lru_cache(maxsize=1)
 def _modelo():
     from fastembed import TextEmbedding  # import tardio: o modelo (~220 MB) só carrega quando usado
-    return TextEmbedding(MODELO, cache_dir=str(BASE / ".cache"))
+    cache = BASE / ".cache"
+    # Com o modelo já baixado, não consulta o Hugging Face a cada início (evita rede e avisos de antivírus).
+    ja_baixado = any(cache.glob("models--*/snapshots/*/tokenizer.json"))
+    return TextEmbedding(MODELO, cache_dir=str(cache), local_files_only=ja_baixado)
 
 
 def embed(textos: list[str]) -> list[list[float]]:
