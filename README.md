@@ -1,5 +1,7 @@
 # Assistente de Vagas com MCP + RAG
 
+[![CI](https://github.com/PedroBLS/vagas-mcp-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/PedroBLS/vagas-mcp-rag/actions/workflows/ci.yml)
+
 Servidor **MCP** (Model Context Protocol) em Python que dá ao Claude ferramentas para buscar vagas na Gupy e encontrar as vagas **mais parecidas com um currículo**, por busca semântica (**RAG**) com embeddings no **PostgreSQL + pgvector** (Supabase).
 
 ```
